@@ -4,7 +4,9 @@
  port to Antanna (and LPF), operates on LF, MF, HF and VHF bands from
  0 to 250 MHz.
 
-To use:
+
+How to use
+==========
   In order to transmit legally, a HAM Radio License is REQUIRED for running
   this experiment. The output is a square wave so a low pass filter is REQUIRED.
   Connect a low-pass filter (via decoupling C) to GPIO4 (GPCLK0) and Ground pin
@@ -59,7 +61,8 @@ To use:
   signal diodes back to back.
 
 
-Usage:
+Usage
+=====
   sudo ./wspr <[prefix]/callsign[/suffix]> <locator> <power in dBm> [<frequency in Hz> ...]
         e.g.: sudo ./wspr PA/K1JT JO21 10 7040074 0 0 10140174 0 0
         where 0 frequency represents a interval for which TX is disabled,
@@ -86,7 +89,8 @@ Usage:
       2m  144490400 -144490600
 
 
-Reference documentation:
+Reference documentation
+=======================
   http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
   http://www.scribd.com/doc/127599939/BCM2835-Audio-clocks
   http://www.scribd.com/doc/101830961/GPIO-Pads-Control2
