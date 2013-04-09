@@ -6,7 +6,12 @@ Prerequisites
 
 Preparation
 ===========
-  sudo apt-get install gcc
+Install compiler and git
+  apt-get install gcc git
+
+Prepare the WsprryPi repository
+  git clone https://github.com/8cH9azbsFifZ/WsprryPi.git
+  cd WsprryPi
 
 
 Build
