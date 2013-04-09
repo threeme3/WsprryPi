@@ -43,6 +43,10 @@ License:
 #define F_XTAL       (19229581.050215044276577479844352)             // calibrated 19.2MHz XTAL frequency 
 #define F_PLLD_CLK   (26.0 * F_XTAL)                                 // 500MHz PLLD reference clock 
 
+#define T_SECOND 1000000 
+#define T_01MSECOND 100
+#define T_1MSECOND 1000
+
 #define N_ITER  1400  // number of PWM operations per symbol; larger values gives less spurs at the cost of frequency resolution; e.g. use 22500 for HF usage up to 30MHz, 12000 up to 50MHz, 1600 for VHF usage up to 144 Mhz, F_PWM_CLK needs to be adjusted when changing N_ITER 
 //#define F_PWM_CLK    (31500000.0)   // 31.5MHz PWM clock   use with N_ITER=22500
 #define F_PWM_CLK    (33970588.235294117647058823529413)   // 31.5MHz calibrated PWM clock   use with N_ITER=1400
@@ -217,19 +221,19 @@ void txSym(int sym, double tsym)
     int j;
     for(j=0; j!=N_ITER; j++){
         bufPtr++;
-        while( ACCESS(DMABASE + 0x04 /* CurBlock*/) ==  (int)(instrs[bufPtr].p)) usleep(100);
+        while( ACCESS(DMABASE + 0x04 /* CurBlock*/) ==  (int)(instrs[bufPtr].p)) usleep(T_01MSECOND);
         ((struct CB*)(instrs[bufPtr].v))->SOURCE_AD = (int)constPage.p + (i-1)*4;
 
         bufPtr++;
-        while( ACCESS(DMABASE + 0x04 /* CurBlock*/) ==  (int)(instrs[bufPtr].p)) usleep(100);
+        while( ACCESS(DMABASE + 0x04 /* CurBlock*/) ==  (int)(instrs[bufPtr].p)) usleep(T_01MSECOND);
         ((struct CB*)(instrs[bufPtr].v))->TXFR_LEN = clocksPerIter-fracval;
 
         bufPtr++;
-        while( ACCESS(DMABASE + 0x04 /* CurBlock*/) ==  (int)(instrs[bufPtr].p)) usleep(100);
+        while( ACCESS(DMABASE + 0x04 /* CurBlock*/) ==  (int)(instrs[bufPtr].p)) usleep(T_01MSECOND);
         ((struct CB*)(instrs[bufPtr].v))->SOURCE_AD = (int)constPage.p + (i+1)*4;
 
         bufPtr=(bufPtr+1) % (1024);
-        while( ACCESS(DMABASE + 0x04 /* CurBlock*/) ==  (int)(instrs[bufPtr].p)) usleep(100);
+        while( ACCESS(DMABASE + 0x04 /* CurBlock*/) ==  (int)(instrs[bufPtr].p)) usleep(T_01MSECOND);
         ((struct CB*)(instrs[bufPtr].v))->TXFR_LEN = fracval;
     }
 }
@@ -320,19 +324,19 @@ void setupDMA(){
 
    // set up a clock for the PWM
    ACCESS(CLKBASE + 40*4 /*PWMCLK_CNTL*/) = 0x5A000026;  // Source=PLLD and disable
-   usleep(1000);
+   usleep(T_1MSECOND);
 //   ACCESS(CLKBASE + 41*4 /*PWMCLK_DIV*/)  = 0x5A002800;
    ACCESS(CLKBASE + 41*4 /*PWMCLK_DIV*/)  = 0x5A002000;  // set PWM div to 2, for 250MHz 
    ACCESS(CLKBASE + 40*4 /*PWMCLK_CNTL*/) = 0x5A000016;  // Source=PLLD and enable 
-   usleep(1000);
+   usleep(T_1MSECOND);
 
    // set up pwm
    ACCESS(PWMBASE + 0x0 /* CTRL*/) = 0;
-   usleep(1000);
+   usleep(T_1MSECOND);
    ACCESS(PWMBASE + 0x4 /* status*/) = -1;  // clear errors
-   usleep(1000);
+   usleep(T_1MSECOND);
    ACCESS(PWMBASE + 0x0 /* CTRL*/) = -1; //(1<<13 /* Use fifo */) | (1<<10 /* repeat */) | (1<<9 /* serializer */) | (1<<8 /* enable ch */) ;
-   usleep(1000);
+   usleep(T_1MSECOND);
    ACCESS(PWMBASE + 0x8 /* DMAC*/) = (1<<31 /* DMA enable */) | 0x0707;
 
    //activate dma
@@ -518,9 +522,9 @@ void wait_every(int minute)
     time(&t); 
     ptm = gmtime(&t);
     if((ptm->tm_min % minute) == 0 && ptm->tm_sec == 0) break;
-    usleep(1000);
+    usleep(T_1MSECOND);
   }
-  usleep(1000000); // wait another second
+  usleep(T_SECOND); // wait another second
 }
 
 int main(int argc, char *argv[])
