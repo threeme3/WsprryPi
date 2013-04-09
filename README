@@ -63,7 +63,7 @@ How to use
 
 Usage
 =====
-  sudo ./wspr <[prefix]/callsign[/suffix]> <locator> <power in dBm> [<frequency in Hz> ...]
+  sudo ./wspr <[prefix/]callsign[/suffix]> <locator> <power in dBm> [<frequency in Hz> ...]
         e.g.: sudo ./wspr PA/K1JT JO21 10 7040074 0 0 10140174 0 0
         where 0 frequency represents a interval for which TX is disabled,
         wspr-2 or wspr-15 mode selection based on specified frequency.
