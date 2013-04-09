@@ -576,11 +576,7 @@ int main(int argc, char *argv[])
     if(band >= nbands)
       band = 0;
     if(centre_freq) setupDMATab(centre_freq, 1.0/wspr_symtime, wspr_symtime, 4);
-    if (tune_mode == 1) 
-	 {
-		 printf ("Tune mode");
-	 }
-	 else
+    if (tune_mode == 0) 
 	 {
 		 wait_every((wspr15) ? 15 : 2);
 	 }
