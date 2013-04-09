@@ -1,0 +1,14 @@
+Issues:
+  Two users were reporting that the program never stops transmitting, even
+  when intervals for disabled tx are programmed. The problem was in both
+  cases fixed by flashing a new image on the SD card with a freshly downloaded 
+  image: 2013-02-09-wheezy-raspbian.zip. No apt-get upgrade or firmware
+  upgrade was performed. After this WsprryPi TX was running successfully. 
+
+  One user reported his RPi died while in WsprryPi service caused by excessive 
+  RF voltage (90V) on GPIO4 created by a 100 watts AM transmitter 50ft away from 
+  the antenna. After the damage exessive current was consumed by RPi (1.1A from 
+  5V supply), caused by short-circuiting in the 3.3V logic of the BCM2835 SOC.
+  On his replacement RPi, he is planning to add galvanic isolation and buffering.
+
+

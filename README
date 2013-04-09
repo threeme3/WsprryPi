@@ -4,18 +4,6 @@
  port to Antanna (and LPF), operates on LF, MF, HF and VHF bands from
  0 to 250 MHz.
 
-Credits:
-  Credits goes to Oliver Mattos and Oskar Weigl who implemented PiFM [1]
-  based on the idea of exploiting RPi DPLL as FM transmitter. Dan MD1CLV
-  combined this effort with WSPR encoding algorithm from F8CHK, resulting
-  in WsprryPi a WSPR beacon for LF and MF bands. Guido PE1NNZ extended
-  this effort with DMA based PWM modulation of fractional divider that was
-  part of PiFM, allowing to operate the WSPR beacon also on HF and VHF bands.
-  In addition time-synchronisation and double amount of power output was
-  implemented.
-
-  [1] PiFM code from http://www.icrobotics.co.uk/wiki/index.php/Turning_the_Raspberry_Pi_Into_an_FM_Transmitter
-
 To use:
   In order to transmit legally, a HAM Radio License is REQUIRED for running
   this experiment. The output is a square wave so a low pass filter is REQUIRED.
@@ -70,12 +58,6 @@ To use:
   by using a RF transformer, a simple buffer/driver/PA stage, two schottky small 
   signal diodes back to back.
 
-Installation / update:
-  Open a terminal and execute the following commands:
-   sudo apt-get install git
-   rm -rf WsprryPi
-   git clone https://github.com/threeme3/WsprryPi.git
-   cd WsprryPi
 
 Usage:
   sudo ./wspr <[prefix]/callsign[/suffix]> <locator> <power in dBm> [<frequency in Hz> ...]
@@ -102,23 +84,6 @@ Usage:
       6m  50294400 - 50294600
       4m  70092400 - 70092600
       2m  144490400 -144490600
-
-Compile:
-  sudo apt-get install gcc
-  gcc -lm -std=c99 wspr.c -owspr
-
-Issues:
-  Two users were reporting that the program never stops transmitting, even
-  when intervals for disabled tx are programmed. The problem was in both
-  cases fixed by flashing a new image on the SD card with a freshly downloaded 
-  image: 2013-02-09-wheezy-raspbian.zip. No apt-get upgrade or firmware
-  upgrade was performed. After this WsprryPi TX was running successfully. 
-
-  One user reported his RPi died while in WsprryPi service caused by excessive 
-  RF voltage (90V) on GPIO4 created by a 100 watts AM transmitter 50ft away from 
-  the antenna. After the damage exessive current was consumed by RPi (1.1A from 
-  5V supply), caused by short-circuiting in the 3.3V logic of the BCM2835 SOC.
-  On his replacement RPi, he is planning to add galvanic isolation and buffering.
 
 
 Reference documentation:

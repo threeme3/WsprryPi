@@ -1,10 +1,12 @@
 /*
 
- Raspberry Pi bareback LF/MF/HF/VHF WSPR transmitter  <pe1nnz@amsat.org>
+ Raspberry Pi bareback LF/MF/HF/VHF WSPR transmitter  
 
  Makes a very simple WSPR beacon from your RasberryPi by connecting GPIO 
  port to Antanna (and LPF), operates on LF, MF, HF and VHF bands from 
  0 to 250 MHz.
+
+ <pe1nnz@amsat.org>
 
 License:
     This program is free software: you can redistribute it and/or modify
@@ -19,9 +21,6 @@ License:
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-
-
 
 */
 
