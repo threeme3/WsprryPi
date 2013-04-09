@@ -120,3 +120,10 @@ Issues:
   5V supply), caused by short-circuiting in the 3.3V logic of the BCM2835 SOC.
   On his replacement RPi, he is planning to add galvanic isolation and buffering.
 
+
+Reference documentation:
+  http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
+  http://www.scribd.com/doc/127599939/BCM2835-Audio-clocks
+  http://www.scribd.com/doc/101830961/GPIO-Pads-Control2
+  https://github.com/mgottschlag/vctools/blob/master/vcdb/cm.yaml
+  https://www.kernel.org/doc/Documentation/vm/pagemap.txt
