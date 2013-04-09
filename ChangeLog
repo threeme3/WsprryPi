@@ -2,4 +2,5 @@
 
     * Split README into standard AUTHORS, THANKS, ChangeLog, INSTALL, COPYING,
 	 BUG
+	 * Added Makefile
 
