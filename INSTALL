@@ -1,12 +1,14 @@
-Installation / update:
-  Open a terminal and execute the following commands:
-   sudo apt-get install git
-   rm -rf WsprryPi
-   git clone https://github.com/threeme3/WsprryPi.git
-   cd WsprryPi
+Prerequisites
+=============
+* Have a RasPi
+* Install Raspian: 2013-02-09-wheezy-raspbian.img
+
 
 Preparation
+===========
   sudo apt-get install gcc
 
-Compile:
+
+Build
+=====
   make
