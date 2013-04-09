@@ -536,6 +536,7 @@ int main(int argc, char *argv[])
   double wspr_symtime;
   int nbands = argc - 4;
   int band = 0;
+  int tune_mode = 0;
 
   if(argc < 5){
     printf("Usage: wspr <[prefix/]callsign[/A-Z,/0-9,/00-99]> <locator> <power in dBm> [<frequency in Hz or 0 for interval> ...]\n");
@@ -546,6 +547,7 @@ int main(int argc, char *argv[])
   // argv[1]=callsign, argv[2]=locator, argv[3]=power(dBm)
   wspr(argv[1], argv[2], argv[3], symbols);
   printf("Symbols: ");
+  if (argv[3] < 0) tune_mode = 1;
   for (i = 0; i < sizeof(symbols)/sizeof(*symbols); i++)
     printf("%d,", symbols[i]);
   printf("\n");
@@ -567,7 +569,7 @@ int main(int argc, char *argv[])
     if(band >= nbands)
       band = 0;
     if(centre_freq) setupDMATab(centre_freq, 1.0/wspr_symtime, wspr_symtime, 4);
-    wait_every((wspr15) ? 15 : 2);
+    if (tune_mode == 0) wait_every((wspr15) ? 15 : 2);
     time_t t;
     time(&t);
     char buf[256];
