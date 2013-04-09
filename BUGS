@@ -1,4 +1,4 @@
-Issues:
+Issues as reported on https://github.com/threeme3/WsprryPi
   Two users were reporting that the program never stops transmitting, even
   when intervals for disabled tx are programmed. The problem was in both
   cases fixed by flashing a new image on the SD card with a freshly downloaded 
