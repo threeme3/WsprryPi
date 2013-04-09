@@ -547,7 +547,11 @@ int main(int argc, char *argv[])
   // argv[1]=callsign, argv[2]=locator, argv[3]=power(dBm)
   wspr(argv[1], argv[2], argv[3], symbols);
   printf("Symbols: ");
-  if (argv[3] < 0) tune_mode = 1;
+  if (argv[3] < 0) 
+  {
+	  printf("Tune mode\n");
+	  tune_mode = 1;
+  }
   for (i = 0; i < sizeof(symbols)/sizeof(*symbols); i++)
     printf("%d,", symbols[i]);
   printf("\n");
