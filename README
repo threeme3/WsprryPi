@@ -33,19 +33,6 @@ How to use
   Reception reports can be viewed on Weak Signal Propagation Reporter Network
   at: http://wsprnet.org/drupal/wsprnet/spots
 
-  Frequency calibration is REQUIRED to ensure that the WSPR-2 transmission occurs
-  within the 200 Hz narrow band. The reference crystal on your RPi might have
-  an frequency error (which in addition is temp. dependent -1.3Hz/degC @10MHz).
-  To calibrate, the frequency might be manually corrected on the command line
-  or by changing the F_XTAL value in the code. A practical way to calibrate
-  is to tune the transmitter on the same frequency of a medium wave AM broadcast
-  station; keep tuning until zero beat (the constant audio tone disappears when
-  the transmitter is exactly on the same frequency as the broadcast station),
-  and determine the frequency difference with the broadcast station. This is
-  the frequency error that can be applied for correction while tuning on a WSPR
-  frequency. Do not overclock your RPi as it may make the clock unreliable due to 
-  a dynamic clocking feature.
-
   DO NOT expose GPIO4 to voltages or currents that are above the specified
   Absolute Maximum limits. GPIO4 outputs a digital clock in 3V3 logic, with a
   maximum current of 16mA. As there is no current protection available and
@@ -68,6 +55,8 @@ Usage
         where 0 frequency represents a interval for which TX is disabled,
         wspr-2 or wspr-15 mode selection based on specified frequency.
 
+Frequencies
+===========
   WSPR is used on the following frequencies (local restriction may apply):
      LF   137400 - 137600
           137600 - 137625 (WSPR-15)
@@ -89,8 +78,31 @@ Usage
       2m  144490400 -144490600
 
 
+Calibration
+===========
+  Frequency calibration is REQUIRED to ensure that the WSPR-2 transmission occurs
+  within the 200 Hz narrow band. The reference crystal on your RPi might have
+  an frequency error (which in addition is temp. dependent -1.3Hz/degC @10MHz).
+  To calibrate, the frequency might be manually corrected on the command line
+  or by changing the F_XTAL value in the code. A practical way to calibrate
+  is to tune the transmitter on the same frequency of a medium wave AM broadcast
+  station; keep tuning until zero beat (the constant audio tone disappears when
+  the transmitter is exactly on the same frequency as the broadcast station),
+  and determine the frequency difference with the broadcast station. This is
+  the frequency error that can be applied for correction while tuning on a WSPR
+  frequency. Do not overclock your RPi as it may make the clock unreliable due to 
+  a dynamic clocking feature.
+
+
+Check reception
+===============
+  CALLSIGN=W1AW
+  wget http://wsprnet.org/drupal/wsprnet/activity -O - 2>&1 |grep -i $CALLSIGN && echo $CALLSIGN found on wsprnet.org 
+
+
 Reference documentation
 =======================
+  WSPR Frequencies: http://wsprnet.org/drupal/node/218
   http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
   http://www.scribd.com/doc/127599939/BCM2835-Audio-clocks
   http://www.scribd.com/doc/101830961/GPIO-Pads-Control2
