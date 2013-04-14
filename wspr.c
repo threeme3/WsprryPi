@@ -38,6 +38,7 @@ License:
 #include <sys/stat.h>
 #include <signal.h>
 #include <malloc.h>
+#include <syslog.h>
 #include <errno.h>
 #include <pwd.h>
 #include <time.h>
