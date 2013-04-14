@@ -574,7 +574,7 @@ static void daemonize( const char *lockfile )
         }
     }
 
-    /* Trap signals that we expect to recieve */
+    /* Trap signals that we expect to receive */
     signal(SIGCHLD,child_handler);
     signal(SIGUSR1,child_handler);
     signal(SIGALRM,child_handler);
@@ -656,13 +656,12 @@ int main(int argc, char *argv[])
   /* Commandline Stuff */
   if(argc < 5){
     printf("Usage: wspr <[prefix/]callsign[/A-Z,/0-9,/00-99]> <locator> <power in dBm> [<frequency in Hz or 0 for interval> ...]\n");
-    printf("\te.g.: sudo ./wspr K1JT/P JO21 10 7040074 0 0 10140174 0 0\n");
-    printf("\tchoose freq in range +/-100 Hz around one of center frequencies: 137500, 475700, 1838100, 3594100, 5288700, 7040100, 10140200, 14097100, 18106100, 21096100, 24926100, 28126100, 50294500, 70092500, 144490500 Hz (WSPR-2), or in range +/-12 Hz around 137612, 475812, 1838212 Hz (WSPR-15).\n");
+    printf("\te.g.: ./wspr K1JT/P JO21 10 7040074 0 0 10140174 0 0\n");
     return 1;
   }
 
   // argv[1]=callsign, argv[2]=locator, argv[3]=power(dBm)
-  //
+  // negative dBm will setup constant tx for tuning
   if (atoi(argv[3]) < 0) 
   {
 	  printf("Tune mode\n");
@@ -674,14 +673,16 @@ int main(int argc, char *argv[])
   for (i = 0; i < sizeof(symbols)/sizeof(*symbols); i++)
     printf("%d,", symbols[i]);
   printf("\n");
+
   setup_io();
   setup_gpios();
   txon();
   setupDMA();
+
   printf("Ready for transmit...\n");
 
   /* Daemonize */
-  daemonize( "/var/lock/subsys/" DAEMON_NAME );
+  //daemonize( "/var/lock/" DAEMON_NAME );
 
   for(;;)
   {
