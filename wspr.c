@@ -530,6 +530,7 @@ void wait_every(int minute)
   usleep(T_SECOND); // wait another second
 }
 
+// http://www-theorie.physik.unizh.ch/~dpotter/howto/daemonize
 static void daemonize(void)
 {
     pid_t pid, sid;

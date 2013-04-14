@@ -3,3 +3,9 @@ all:
 
 clean:
 	rm wspr
+
+install:
+	cp wspr /usr/local/sbin/
+
+uninstall:
+	rm /usr/local/sbin/wspr
