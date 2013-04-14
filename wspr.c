@@ -715,7 +715,7 @@ int main(int argc, char *argv[])
   }
 
   /* Finish up */
-  syslog( LOG_NOTICE, "terminated" )
+  syslog( LOG_NOTICE, "terminated" );
   closelog();
 
   return 0;
