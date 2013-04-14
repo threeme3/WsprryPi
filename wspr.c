@@ -24,6 +24,7 @@ License:
 
 */
 
+#define _POSIX_SOURCE
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -680,7 +681,7 @@ int main(int argc, char *argv[])
   printf("Ready for transmit...\n");
 
   /* Daemonize */
-  daemonize();
+  daemonize( "/var/lock/subsys/" DAEMON_NAME );
 
   for(;;)
   {
