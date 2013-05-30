@@ -1,6 +1,7 @@
-2013-04-09  Gerolf Ziegenhain <g@ziegenhain.com>
+2013-05-30  Gerolf Ziegenhain, DG6FL <g@ziegenhain.com>
+	* Added wiring schematic
+	* Added bandpass filter values
 
-    * Split README into standard AUTHORS, THANKS, ChangeLog, INSTALL, COPYING,
-	 BUG
-	 * Added Makefile
-
+2013-04-09  Gerolf Ziegenhain, DG6FL <g@ziegenhain.com>
+	* Split README into standard AUTHORS, THANKS, ChangeLog, INSTALL, COPYING,
+	* Added Makefile
