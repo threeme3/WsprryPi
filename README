@@ -1,38 +1,26 @@
- Raspberry Pi bareback LF/MF/HF/VHF WSPR transmitter
+ Raspberry Pi Bareback LF/MF/HF/VHF WSPR Transmitter
 
  Makes a very simple WSPR beacon from your RasberryPi by connecting GPIO
  port to Antanna (and LPF), operates on LF, MF, HF and VHF bands from
  0 to 250 MHz.
+ In order to transmit legally, a HAM Radio License is REQUIRED for running
+ this experiment. 
 
 
-How to use
+How to Use
 ==========
-  In order to transmit legally, a HAM Radio License is REQUIRED for running
-  this experiment. The output is a square wave so a low pass filter is REQUIRED.
-  Connect a low-pass filter (via decoupling C) to GPIO4 (GPCLK0) and Ground pin
-  of your Raspberry Pi, connect an antenna to the LPF. The GPIO4 and GND pins
-  are found on header P1 pin 7 and 9 respectively, the pin closest to P1 label
-  is pin 1 and its 3rd and 4th neighbour is pin 7 and 9 respectively, see this
-  link for pin layout: http://elinux.org/RPi_Low-level_peripherals Examples of
-  low-pass filters can be found here: http://www.gqrp.com/harmonic_filters.pdf
-  The expected power output is 10mW (+10dBm) in a 50 Ohm load. This looks
-  neglible, but when connected to a simple dipole antenna this may result in
-  reception reports ranging up to several thousands of kilometers.
-  Example of low-pass filters here: http://www.gqrp.com/harmonic_filters.pdf
-  As the Raspberry Pi does not attenuate ripple and noise components from the
-  5V USB power supply, it is RECOMMENDED to use a regulated supply that has
-  sufficient ripple supression. Supply ripple might be seen as mixing products
-  products centered around the transmit carrier typically at 100/120Hz.
+0) Install Raspbian (12)
+1) Follow the instructions given in INSTALL to build and install the software
+2) Connect bandpassfilter and antenna (cf. below)
+3) Calibrate (cf. below)
 
-  This software is using system time to determine the start of a WSPR
-  transmissions, so keep the system time synchronised within 1sec precision,
-  i.e. use NTP network time synchronisation or set time manually with date
-  command. A WSPR broadcast starts on even minute and takes 2 minutes for WSPR-2
-  or starts at :00,:15,:30,:45 and takes 15 minutes for WSPR-15. It contains
-  a callsign, 4-digit Maidenhead square locator and transmission power.
-  Reception reports can be viewed on Weak Signal Propagation Reporter Network
-  at: http://wsprnet.org/drupal/wsprnet/spots
-
+Filter and Antenna
+==================
+  Connect a low pass filter (9) to the PINs (2,11) 7 and 9 as described in 
+  wiring.png.  The expected power output is 10mW (+10dBm) in a 50 Ohm load. 
+  This looks neglible, but when connected to a simple dipole antenna this may 
+  result in reception reports ranging up to several thousands of kilometers. 
+ 
   DO NOT expose GPIO4 to voltages or currents that are above the specified
   Absolute Maximum limits. GPIO4 outputs a digital clock in 3V3 logic, with a
   maximum current of 16mA. As there is no current protection available and
@@ -48,15 +36,35 @@ How to use
   signal diodes back to back.
 
 
-Usage
+Power Supply
+============ 
+  As the Raspberry Pi does not attenuate ripple and noise components from the
+  5V USB power supply, it is RECOMMENDED to use a regulated supply that has
+  sufficient ripple supression. Supply ripple might be seen as mixing products
+  products centered around the transmit carrier typically at 100/120Hz.
+
+
+Software Description
+====================
+  This software is using system time to determine the start of a WSPR
+  transmissions, so keep the system time synchronised within 1sec precision,
+  i.e. use NTP network time synchronisation or set time manually with date
+  command. A WSPR broadcast starts on even minute and takes 2 minutes for WSPR-2
+  or starts at :00,:15,:30,:45 and takes 15 minutes for WSPR-15. It contains
+  a callsign, 4-digit Maidenhead square locator and transmission power.
+  Reception reports can be viewed on Weak Signal Propagation Reporter Network (10).
+
+
+Usage 
 =====
   sudo ./wspr <[prefix/]callsign[/suffix]> <locator> <power in dBm> [<frequency in Hz> ...]
         e.g.: sudo ./wspr PA/K1JT JO21 10 7040074 0 0 10140174 0 0
         where 0 frequency represents a interval for which TX is disabled,
         wspr-2 or wspr-15 mode selection based on specified frequency.
 
-Frequencies
-===========
+
+WSPR Frequencies (1)
+====================
   WSPR is used on the following frequencies (local restriction may apply):
      LF   137400 - 137600
           137600 - 137625 (WSPR-15)
@@ -110,9 +118,15 @@ Check reception
 
 Reference documentation
 =======================
-  WSPR Frequencies: http://wsprnet.org/drupal/node/218
-  http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
-  http://www.scribd.com/doc/127599939/BCM2835-Audio-clocks
-  http://www.scribd.com/doc/101830961/GPIO-Pads-Control2
-  https://github.com/mgottschlag/vctools/blob/master/vcdb/cm.yaml
-  https://www.kernel.org/doc/Documentation/vm/pagemap.txt
+  [1] WSPR Frequencies: http://wsprnet.org/drupal/node/218
+  [2] http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
+  [3] http://www.scribd.com/doc/127599939/BCM2835-Audio-clocks
+  [4] http://www.scribd.com/doc/101830961/GPIO-Pads-Control2
+  [5] https://github.com/mgottschlag/vctools/blob/master/vcdb/cm.yaml
+  [6] https://www.kernel.org/doc/Documentation/vm/pagemap.txt
+  [7] http://www.gqrp.com/harmonic_filters.pdf
+  [8] Raspberry Pi Foundation: http://www.raspberrypi.org/
+  [9] Dobbs, G., G3RJV: A Complete Do-It-Yourself Kit... with just a few simple calculations. http://www.gqrp.com/harmonic_filters.pdf
+  [10] WSPRnet: Weak Signal Propagation Reporter Network. http://wsprnet.org/drupal/
+  [11] Raspi Pinbelegung: http://elinux.org/RPi_Low-level_peripherals
+  [12] Raspbian http://www.raspbian.org/
