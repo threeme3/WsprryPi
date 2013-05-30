@@ -1,3 +1,4 @@
+Oliver Mattos and Oskar Weigl
 Credits goes to Oliver Mattos and Oskar Weigl who implemented PiFM [1]
 based on the idea of exploiting RPi DPLL as FM transmitter. Dan MD1CLV
 combined this effort with WSPR encoding algorithm from F8CHK, resulting
