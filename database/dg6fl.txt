@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+   <meta name="MSSmartTagsPreventParsing" content="true">
+   <meta http-equiv="Pragma" content="no-cache">
+   <meta http-equiv="Refresh" content="300">
+   <title>WSPR Spots</title>
+   <link rel="alternate" title="MEPT Spots RSS" href="http://wsprnet.org/olddb?mode=rss" type="application/rss+xml">
+   <style type="text/css">
+      #oddrow { background-color: #382836; }
+      #evenrow { background-color: #30202d; }
+      A:link { color: #ffff00; }
+      A:visited { color: #ffff00; }
+      A:active { color: #ffff00; }
+   </style>
+</head>
+<body style="font-family: sans-serif; background-color: #40303d; color: #ffffff">
+  <div style="text-align: center; font-weight: bold; font-size: 20pt;">
+    WSPR Spot Database 
+  </div>
+  <p>
+<table align=center width=100%>
+ <tr>
+  <td><a href="index.html">WSPRnet.org Home</a></td>
+  <td><a href="drupal/wsprnet/chat">Sked/Chat page</a></td>
+  <td><a href="drupal/wsprnet/map">Maps</a></td>
+  <td><a href="stats.php">DB statistics</a></td>
+  <td>5071909 spots in the database</td>
+ </tr>
+</table>			    
+  <p>
+  <table style="width: 100%; margin-left: auto; margin-right: auto;">
+    <tr id="evenrow">
+      <td style="text-align: left;">
+         Display options<p>
+         <form action="olddb" method="GET">
+           <input type="hidden" name="mode" value="html">
+           Band:
+   <select name='band'>
+<option selected value="all">All</option>
+<option value="2190">2190-600m</option>
+<option value="160">160m</option>
+<option value="80">80m</option>
+<option value="60">60m</option>
+<option value="40">40m</option>
+<option value="30">30m</option>
+<option value="20">20m</option>
+<option value="17">17m</option>
+<option value="15">15m</option>
+<option value="12">12m</option>
+<option value="10">10m</option>
+<option value="6">6m</option>
+<option value="4">4m</option>
+<option value="2">2m</option>
+<option value="220">125cm</option>
+<option value="432">70cm</option>
+<option value="u">GHz</option>
+</select>
+         <br>
+         Number of spots: <input type="text" name="limit" size=3 value="5000"><br>
+         Search for call: <input type="text" name="findcall" value="dg6fl" size=7><br>
+         Show spots heard by: <input type="text" name="findreporter" value="" size=7><br>
+	 Sort by:
+         <select name="sort">
+<option value="date">Date</option>
+<option value="callsign">Call</option>
+<option value="mhz">Frequency</option>
+<option value="db">SNR</option>
+<option value="grid">Grid</option>
+<option value="power">Power</option>
+<option value="reporter">Reporter</option>
+<option selected value="distance">Distance</option>
+<option value="distance/pow(10,(power-30.0)/10.0)">Miles per Watt</option>
+<option value="spotnum">Upload order</option>
+	 </select>
+	 Reverse order<input type="checkbox" name="reverse"><br>
+	 Find unique calls<input type="checkbox" name="unique" >
+	 Find unique reporters<input type="checkbox" name="uniquereporters" checked><br>
+         <input type="submit" value="Go!">
+         <input type="reset" value="Reset">
+      </form>
+   </td>
+   <td style="text-align: right;">
+     <b>Upload your log!</b><p>
+     <form enctype="multipart/form-data" action="post" method="POST">
+       Your callsign: <input type="text" name="call" size="10" value=""><br>
+       Your grid: <input type="text" name="grid" size="6" value=""> (6 chars preferred)<br>
+       <input type="hidden" name="MAX_FILE_SIZE" value="10000000">
+       Location of ALL_MEPT.TXT: <input name="allmept" type="file"><br>
+       (will be in same directory as WSPR.EXE, max size 10M)<br>
+       Show verbose parser output <input type="checkbox" name="verbose"><br>
+       <input type="submit" value="Upload spots">
+     </form>
+     <p><a href="automate.txt">How can I automate this?</a>
+   </td></tr>
+  </form>
+</table>
+<p>
+<table style="font-family: monospace; font-size: 12pt; margin-right: auto;">
+<tr>
+  <th align=center colspan=6></th>
+  <th align=center colspan=2><b><a href="olddb?sort=Power">Power</a></b></th>
+  <th align=center colspan=2><b><a href="olddb?sort=Reporter">Reported</a></b></th>
+  <th align=center colspan=2><b><a href="olddb?sort=Distance">Distance</a></b></th>
+</tr>
+<tr>
+  <th align=center><b><a href="olddb?sort=Date">Date</a></b></th>
+  <th align=center><b><a href="olddb?sort=Call">Call</a></b></th>
+  <th align=center><b><a href="olddb?sort=MHz">Frequency</a></b></th>
+  <th align=center><b><a href="olddb?sort=dB">SNR</a></b></th>
+  <th align=center><b>Drift</b></th>
+  <th align=center><b><a href="olddb?sort=Grid">Grid</a></b></th>
+  <th align=center><b><a href="olddb?sort=Power">dBm</a></b></th>
+  <th align=center><b><a href="olddb?sort=Power">W<br></a></b></th>
+  <th align=center><b><a href="olddb?sort=Reporter">by</a></b></th>
+  <th align=center><b><a href="olddb?sort=ReporterGrid">loc</a></b></th>
+  <th align=center><b><a href="olddb?sort=Distance">km</a></b></th>
+  <th align=center><b><a href="olddb?sort=Distance">mi</a></b></th>
+</tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-22 05:02&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140238&nbsp;</td><td align=right>&nbsp;-21&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;W4AC&nbsp;</td><td align=left>&nbsp;EL86&nbsp;</td><td align=right>&nbsp;7869&nbsp;</td><td align=right>&nbsp;4890&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-15 04:44&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140239&nbsp;</td><td align=right>&nbsp;-23&nbsp;</td><td align=right>&nbsp;0&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;N3ZM&nbsp;</td><td align=left>&nbsp;FM29cs&nbsp;</td><td align=right>&nbsp;6358&nbsp;</td><td align=right>&nbsp;3951&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-16 23:38&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140250&nbsp;</td><td align=right>&nbsp;-23&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;LA9JO&nbsp;</td><td align=left>&nbsp;JP99gb&nbsp;</td><td align=right>&nbsp;2184&nbsp;</td><td align=right>&nbsp;1357&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-24 04:08&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140252&nbsp;</td><td align=right>&nbsp;-22&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;OH8GKP&nbsp;</td><td align=left>&nbsp;KP24rt&nbsp;</td><td align=right>&nbsp;1924&nbsp;</td><td align=right>&nbsp;1196&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-17 20:36&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140249&nbsp;</td><td align=right>&nbsp;-24&nbsp;</td><td align=right>&nbsp;0&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;LB9YE&nbsp;</td><td align=left>&nbsp;JP54pu&nbsp;</td><td align=right>&nbsp;1655&nbsp;</td><td align=right>&nbsp;1028&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-20 12:46&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140245&nbsp;</td><td align=right>&nbsp;-25&nbsp;</td><td align=right>&nbsp;0&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;OH5ZA&nbsp;</td><td align=left>&nbsp;KP21ni&nbsp;</td><td align=right>&nbsp;1633&nbsp;</td><td align=right>&nbsp;1015&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-18 20:02&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140246&nbsp;</td><td align=right>&nbsp;-22&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;EI7GSB&nbsp;</td><td align=left>&nbsp;IO52qd&nbsp;</td><td align=right>&nbsp;1195&nbsp;</td><td align=right>&nbsp;743&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-14 21:56&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140243&nbsp;</td><td align=right>&nbsp;-22&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;EI9GNB&nbsp;</td><td align=left>&nbsp;IO51sv&nbsp;</td><td align=right>&nbsp;1182&nbsp;</td><td align=right>&nbsp;734&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-21 16:30&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140246&nbsp;</td><td align=right>&nbsp;-17&nbsp;</td><td align=right>&nbsp;0&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;MI3LDO&nbsp;</td><td align=left>&nbsp;IO64gg&nbsp;</td><td align=right>&nbsp;1163&nbsp;</td><td align=right>&nbsp;723&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-19 20:32&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140253&nbsp;</td><td align=right>&nbsp;-25&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;LA1QDA&nbsp;</td><td align=left>&nbsp;JP20qh&nbsp;</td><td align=right>&nbsp;1154&nbsp;</td><td align=right>&nbsp;717&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-15 12:10&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140227&nbsp;</td><td align=right>&nbsp;-24&nbsp;</td><td align=right>&nbsp;0&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;LA3RK&nbsp;</td><td align=left>&nbsp;JO59hw&nbsp;</td><td align=right>&nbsp;1109&nbsp;</td><td align=right>&nbsp;689&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-26 11:34&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;7.040147&nbsp;</td><td align=right>&nbsp;-17&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;GM7KFS&nbsp;</td><td align=left>&nbsp;IO75mu&nbsp;</td><td align=right>&nbsp;1089&nbsp;</td><td align=right>&nbsp;677&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-18 20:04&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140242&nbsp;</td><td align=right>&nbsp;-20&nbsp;</td><td align=right>&nbsp;2&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;LA1IC&nbsp;</td><td align=left>&nbsp;JO59fs&nbsp;</td><td align=right>&nbsp;1089&nbsp;</td><td align=right>&nbsp;677&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-14 07:50&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140207&nbsp;</td><td align=right>&nbsp;-24&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;EI3KF&nbsp;</td><td align=left>&nbsp;IO63qi&nbsp;</td><td align=right>&nbsp;1083&nbsp;</td><td align=right>&nbsp;673&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-24 13:22&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140228&nbsp;</td><td align=right>&nbsp;-25&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;LA5GOA&nbsp;</td><td align=left>&nbsp;JO29oi&nbsp;</td><td align=right>&nbsp;1051&nbsp;</td><td align=right>&nbsp;653&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-14 20:06&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140234&nbsp;</td><td align=right>&nbsp;-23&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;LA3JJ\A&nbsp;</td><td align=left>&nbsp;JO59bh&nbsp;</td><td align=right>&nbsp;1036&nbsp;</td><td align=right>&nbsp;644&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-20 13:36&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140242&nbsp;</td><td align=right>&nbsp;-24&nbsp;</td><td align=right>&nbsp;0&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;LA3JJ&nbsp;</td><td align=left>&nbsp;JO59bh&nbsp;</td><td align=right>&nbsp;1036&nbsp;</td><td align=right>&nbsp;644&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-14 13:54&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140231&nbsp;</td><td align=right>&nbsp;-26&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;GM3NKG&nbsp;</td><td align=left>&nbsp;IO85ar&nbsp;</td><td align=right>&nbsp;1029&nbsp;</td><td align=right>&nbsp;639&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-26 18:42&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140240&nbsp;</td><td align=right>&nbsp;-25&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;SA6BSS&nbsp;</td><td align=left>&nbsp;JO68&nbsp;</td><td align=right>&nbsp;985&nbsp;</td><td align=right>&nbsp;612&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-15 18:24&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140250&nbsp;</td><td align=right>&nbsp;-24&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;M1AVV&nbsp;</td><td align=left>&nbsp;IO84ic&nbsp;</td><td align=right>&nbsp;904&nbsp;</td><td align=right>&nbsp;562&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-15 15:52&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140230&nbsp;</td><td align=right>&nbsp;-25&nbsp;</td><td align=right>&nbsp;0&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;G4DND&nbsp;</td><td align=left>&nbsp;IO80bo&nbsp;</td><td align=right>&nbsp;859&nbsp;</td><td align=right>&nbsp;534&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-15 09:40&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140229&nbsp;</td><td align=right>&nbsp;-20&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;G4DDND&nbsp;</td><td align=left>&nbsp;IO80bo&nbsp;</td><td align=right>&nbsp;859&nbsp;</td><td align=right>&nbsp;534&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-20 17:30&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140262&nbsp;</td><td align=right>&nbsp;-26&nbsp;</td><td align=right>&nbsp;2&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;M1SWB&nbsp;</td><td align=left>&nbsp;IO83mk&nbsp;</td><td align=right>&nbsp;854&nbsp;</td><td align=right>&nbsp;531&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-21 17:58&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140241&nbsp;</td><td align=right>&nbsp;-22&nbsp;</td><td align=right>&nbsp;0&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;M0DEV&nbsp;</td><td align=left>&nbsp;IO82op&nbsp;</td><td align=right>&nbsp;815&nbsp;</td><td align=right>&nbsp;506&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-23 15:10&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140240&nbsp;</td><td align=right>&nbsp;-11&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;M0DCM&nbsp;</td><td align=left>&nbsp;IO82wl&nbsp;</td><td align=right>&nbsp;767&nbsp;</td><td align=right>&nbsp;477&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-22 10:52&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140238&nbsp;</td><td align=right>&nbsp;-22&nbsp;</td><td align=right>&nbsp;2&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;G0IMX&nbsp;</td><td align=left>&nbsp;IO92ao&nbsp;</td><td align=right>&nbsp;760&nbsp;</td><td align=right>&nbsp;472&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-15 07:04&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140248&nbsp;</td><td align=right>&nbsp;-24&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;M0ITF&nbsp;</td><td align=left>&nbsp;IO81wv&nbsp;</td><td align=right>&nbsp;751&nbsp;</td><td align=right>&nbsp;467&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-21 16:48&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140241&nbsp;</td><td align=right>&nbsp;-18&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;G4KZV&nbsp;</td><td align=left>&nbsp;IO92bk&nbsp;</td><td align=right>&nbsp;749&nbsp;</td><td align=right>&nbsp;465&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-16 17:06&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140231&nbsp;</td><td align=right>&nbsp;-23&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;F8KGW&nbsp;</td><td align=left>&nbsp;IN98ec&nbsp;</td><td align=right>&nbsp;748&nbsp;</td><td align=right>&nbsp;465&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-14 19:20&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140235&nbsp;</td><td align=right>&nbsp;-21&nbsp;</td><td align=right>&nbsp;0&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;G0MGX&nbsp;</td><td align=left>&nbsp;IO93ga&nbsp;</td><td align=right>&nbsp;744&nbsp;</td><td align=right>&nbsp;462&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-13 17:30&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140198&nbsp;</td><td align=right>&nbsp;-15&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;G6HUI&nbsp;</td><td align=left>&nbsp;IO81wl&nbsp;</td><td align=right>&nbsp;743&nbsp;</td><td align=right>&nbsp;462&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-23 19:26&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140253&nbsp;</td><td align=right>&nbsp;-12&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;M0ARM&nbsp;</td><td align=left>&nbsp;IO80vp&nbsp;</td><td align=right>&nbsp;741&nbsp;</td><td align=right>&nbsp;460&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-20 17:20&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140241&nbsp;</td><td align=right>&nbsp;-22&nbsp;</td><td align=right>&nbsp;-1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;G0HZG&nbsp;</td><td align=left>&nbsp;IO92ho&nbsp;</td><td align=right>&nbsp;723&nbsp;</td><td align=right>&nbsp;449&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-24 15:58&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140240&nbsp;</td><td align=right>&nbsp;-24&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;G0FCH&nbsp;</td><td align=left>&nbsp;IO91cn&nbsp;</td><td align=right>&nbsp;721&nbsp;</td><td align=right>&nbsp;448&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-18 09:28&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140253&nbsp;</td><td align=right>&nbsp;-27&nbsp;</td><td align=right>&nbsp;0&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;G0WFS&nbsp;</td><td align=left>&nbsp;IO92jn&nbsp;</td><td align=right>&nbsp;710&nbsp;</td><td align=right>&nbsp;441&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-20 11:42&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140237&nbsp;</td><td align=right>&nbsp;-21&nbsp;</td><td align=right>&nbsp;0&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;IW1RGP&nbsp;</td><td align=left>&nbsp;JN33vt&nbsp;</td><td align=right>&nbsp;696&nbsp;</td><td align=right>&nbsp;432&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-20 17:56&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140249&nbsp;</td><td align=right>&nbsp;-16&nbsp;</td><td align=right>&nbsp;2&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;F1VMV&nbsp;</td><td align=left>&nbsp;JN24kh&nbsp;</td><td align=right>&nbsp;687&nbsp;</td><td align=right>&nbsp;427&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-16 17:04&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140232&nbsp;</td><td align=right>&nbsp;-23&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;M0POQ&nbsp;</td><td align=left>&nbsp;IO91ij&nbsp;</td><td align=right>&nbsp;684&nbsp;</td><td align=right>&nbsp;425&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-22 12:28&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140240&nbsp;</td><td align=right>&nbsp;-28&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;G0MQW&nbsp;</td><td align=left>&nbsp;IO91ml&nbsp;</td><td align=right>&nbsp;663&nbsp;</td><td align=right>&nbsp;412&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-16 19:20&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140257&nbsp;</td><td align=right>&nbsp;-25&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;G8YTR&nbsp;</td><td align=left>&nbsp;IO90lv&nbsp;</td><td align=right>&nbsp;661&nbsp;</td><td align=right>&nbsp;411&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-24 14:42&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140239&nbsp;</td><td align=right>&nbsp;-22&nbsp;</td><td align=right>&nbsp;0&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;G7RPG&nbsp;</td><td align=left>&nbsp;IO90lt&nbsp;</td><td align=right>&nbsp;660&nbsp;</td><td align=right>&nbsp;410&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-21 19:02&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140223&nbsp;</td><td align=right>&nbsp;-23&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;OE6WSF&nbsp;</td><td align=left>&nbsp;JN76ts&nbsp;</td><td align=right>&nbsp;658&nbsp;</td><td align=right>&nbsp;409&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-21 11:44&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140267&nbsp;</td><td align=right>&nbsp;-21&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;G4LOP&nbsp;</td><td align=left>&nbsp;JO03ce&nbsp;</td><td align=right>&nbsp;652&nbsp;</td><td align=right>&nbsp;405&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-21 19:02&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140235&nbsp;</td><td align=right>&nbsp;-17&nbsp;</td><td align=right>&nbsp;0&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;OZ7IT&nbsp;</td><td align=left>&nbsp;JO65df&nbsp;</td><td align=right>&nbsp;637&nbsp;</td><td align=right>&nbsp;396&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-21 12:34&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140248&nbsp;</td><td align=right>&nbsp;-25&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;IZ4PSG&nbsp;</td><td align=left>&nbsp;JN54kp&nbsp;</td><td align=right>&nbsp;635&nbsp;</td><td align=right>&nbsp;395&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-14 11:00&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140221&nbsp;</td><td align=right>&nbsp;-15&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;OV1MK&nbsp;</td><td align=left>&nbsp;JO65bb&nbsp;</td><td align=right>&nbsp;616&nbsp;</td><td align=right>&nbsp;383&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-21 12:02&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140255&nbsp;</td><td align=right>&nbsp;-24&nbsp;</td><td align=right>&nbsp;2&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;G8CRB&nbsp;</td><td align=left>&nbsp;JO02bf&nbsp;</td><td align=right>&nbsp;613&nbsp;</td><td align=right>&nbsp;381&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-15 08:10&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140246&nbsp;</td><td align=right>&nbsp;-24&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;G3YSX&nbsp;</td><td align=left>&nbsp;IO91wg&nbsp;</td><td align=right>&nbsp;602&nbsp;</td><td align=right>&nbsp;374&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-21 11:40&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140246&nbsp;</td><td align=right>&nbsp;-28&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;M3GWO&nbsp;</td><td align=left>&nbsp;IO90xt&nbsp;</td><td align=right>&nbsp;590&nbsp;</td><td align=right>&nbsp;367&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-18 11:38&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140241&nbsp;</td><td align=right>&nbsp;-15&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;G0TTV&nbsp;</td><td align=left>&nbsp;JO02rn&nbsp;</td><td align=right>&nbsp;545&nbsp;</td><td align=right>&nbsp;339&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-21 11:18&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140237&nbsp;</td><td align=right>&nbsp;-21&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;DF2LV&nbsp;</td><td align=left>&nbsp;JO44rs&nbsp;</td><td align=right>&nbsp;530&nbsp;</td><td align=right>&nbsp;329&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-13 13:18&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140119&nbsp;</td><td align=right>&nbsp;-14&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;DC7NEU&nbsp;</td><td align=left>&nbsp;JO63wd&nbsp;</td><td align=right>&nbsp;520&nbsp;</td><td align=right>&nbsp;323&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-21 11:24&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140282&nbsp;</td><td align=right>&nbsp;-26&nbsp;</td><td align=right>&nbsp;2&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;IW2NYX&nbsp;</td><td align=left>&nbsp;JN45km&nbsp;</td><td align=right>&nbsp;507&nbsp;</td><td align=right>&nbsp;315&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-24 20:12&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140251&nbsp;</td><td align=right>&nbsp;-23&nbsp;</td><td align=right>&nbsp;0&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;F6BIA&nbsp;</td><td align=left>&nbsp;JN18dq&nbsp;</td><td align=right>&nbsp;455&nbsp;</td><td align=right>&nbsp;283&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-15 10:42&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140236&nbsp;</td><td align=right>&nbsp;-21&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;PA1SDB&nbsp;</td><td align=left>&nbsp;JO33kh&nbsp;</td><td align=right>&nbsp;373&nbsp;</td><td align=right>&nbsp;232&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-24 17:12&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140237&nbsp;</td><td align=right>&nbsp;-13&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;ON4SNW&nbsp;</td><td align=left>&nbsp;JO21ce&nbsp;</td><td align=right>&nbsp;309&nbsp;</td><td align=right>&nbsp;192&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-24 16:58&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140253&nbsp;</td><td align=right>&nbsp;-14&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;ON7KO&nbsp;</td><td align=left>&nbsp;JO21ce&nbsp;</td><td align=right>&nbsp;309&nbsp;</td><td align=right>&nbsp;192&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-18 13:16&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140247&nbsp;</td><td align=right>&nbsp;-22&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;ON7KB&nbsp;</td><td align=left>&nbsp;JO21ei&nbsp;</td><td align=right>&nbsp;306&nbsp;</td><td align=right>&nbsp;190&nbsp;</td></tr>
+<tr id="evenrow"><td align=left>&nbsp;2013-04-15 08:18&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140240&nbsp;</td><td align=right>&nbsp;-21&nbsp;</td><td align=right>&nbsp;1&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;PI4THT&nbsp;</td><td align=left>&nbsp;JO32kf&nbsp;</td><td align=right>&nbsp;258&nbsp;</td><td align=right>&nbsp;160&nbsp;</td></tr>
+<tr id="oddrow"><td align=left>&nbsp;2013-04-24 14:56&nbsp;</td><td align=left>&nbsp;DG6FL&nbsp;</td><td align=right>&nbsp;10.140240&nbsp;</td><td align=right>&nbsp;-24&nbsp;</td><td align=right>&nbsp;0&nbsp;</td><td align=left>&nbsp;JO40cb&nbsp;</td><td align=right>&nbsp;+10&nbsp;</td><td align=right>&nbsp;0.010&nbsp;</td><td align=left>&nbsp;DJ2RD&nbsp;</td><td align=left>&nbsp;JO40cc&nbsp;</td><td align=right>&nbsp;8&nbsp;</td><td align=right>&nbsp;5&nbsp;</td></tr>
+</table>
+<div style="width: 300px; margin-left: auto; margin-right: auto; text-align: center;">
+  <p>CSV/XML download disabled until fixed</p>
+</div>
+<p>
+<span style='font-style: italic; font-size: 8pt;'>Processing took 10 milliseconds</span>
+</body>
+</html>
