@@ -235,7 +235,7 @@ Credits:
   Dan MD1CLV combined this effort with WSPR encoding algorithm from F8CHK,
   resulting in WsprryPi a WSPR beacon for LF and MF bands.
 
-  Guido PE1NNZ <pe1nnz@amsat.org> extended this effort with DMA based PWM
+  Guido PE1NNZ <pe1nnz@qsl.net> extended this effort with DMA based PWM
   modulation of fractional divider that was part of PiFM, allowing to operate
   the WSPR beacon also on HF and VHF bands.  In addition time-synchronisation
   and double amount of power output was implemented.
